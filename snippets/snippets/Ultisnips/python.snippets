@@ -1,0 +1,27 @@
+snippet noi "Add: raise NotImplementedError" i
+raise NotImplementedError()
+endsnippet
+
+# Pytorch Snippets
+
+# A. 
+#	 (t) where <.> will be the first letter of the function 
+# 	w	for example Tz => torch.zeros(...)
+
+snippet tZ "Pytorch tensor.zeros(...)" A
+torch.zeros($0, dtype=torch.${1:float}, device=${2:cpu})
+endsnippet
+
+snippet tO "Pytorch tensor.ones(...)" A
+torch.ones($0, dtype=torch.${1:float}, device=${2:cpu})
+endsnippet
+
+snippet tT "Pytorch tensor.Tensor(...)" A
+torch.tensor($0, dtype=torch.${1:float}, device=${2:cpu})
+endsnippet
+
+# TODO: Add new_
+
+snippet tS "Pytorch Ops: torch.squeeze(...)" A
+torch.squeeze($0, dim=${1:0})
+endsnippet

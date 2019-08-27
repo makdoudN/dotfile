@@ -28,19 +28,15 @@ set noerrorbells                  " Please no more beep
 set modeline                      " Enable mode line
 set magic                         " Use 'magic' patterns (extended regular expressions).
 set smartindent                   " well smart indent :)
-
 set termguicolors
-
-" Folding options
-
 set foldmethod=indent
 set foldlevel=99
+set number relativenumber
+set clipboard=unnamed
+set hlsearch
+set incsearch
 
 nnoremap <space> za
-
-set clipboard=unnamed
-
-set number relativenumber
 
 augroup numbertoggle
   autocmd!
@@ -48,63 +44,53 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
-" when search highlights text that correspond.
-set hlsearch
+" Leader Mapping
 
 let mapleader = ","
-
+let maplocalleader=";"
 
 " PLUGINS
 
 call plug#begin('~/.vim/plugged')
 
-
 " Autocompletion
 
 Plug 'ycm-core/YouCompleteMe'
+Plug 'zxqfl/tabnine-vim'
 
 " Linter
 
-"Plug 'w0rp/ale'                                                         " linter
+Plug 'dense-analysis/ale'
 
+" Core Plugins "
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-abolish'
+
+Plug 'easymotion/vim-easymotion'                                        " Navigation
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }                 " On-demand loading
 Plug 'tpope/vim-fugitive'                                               " Git wrapper
 
-Plug 'flazz/vim-colorschemes'                                           " Themes
-Plug 'arcticicestudio/nord-vim'                                         " Themes
-Plug 'itchyny/lightline.vim'                                            " Themes
-Plug 'vim-airline/vim-airline-themes'                                   " Themes
-Plug 'vim-airline/vim-airline'                                          " Themes
-Plug 'rakr/vim-one'
-
-Plug 'ap/vim-buftabline'
-
-
-Plug 'tmhedberg/SimpylFold'                                             " zc: close fold , zo: open
-Plug 'begriffs/vim-haskellconceal'
-Plug 'enomsg/vim-haskellConcealPlus'
-
-Plug 'rhlobo/vim-super-retab'
-Plug 'easymotion/vim-easymotion'
-
-" see http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
-Plug 'godlygeek/tabular'
-
-" use <Tab> for insert completion :)
 Plug 'ervandew/supertab'
 
-" surrounding :)
-" https://github.com/tpope/vim-surround
-" csAB  A///A -> B///B : change surrounding
-" dsA                  : delete surrounding
-Plug 'tpope/vim-surround'
+" Theme "
+
+Plug 'flazz/vim-colorschemes'                                           " Themes
+Plug 'itchyny/lightline.vim'                                            " Themes
+Plug 'rakr/vim-one'
+Plug 'ap/vim-buftabline'
+
+Plug 'tmhedberg/SimpylFold'                                             " zc: close fold , zo: open
 
 " Place visual mark in the left,
 " mx: toggle mark 'x', dmx: remove mark x
 " ]` jump to next mark ]` previous one
 Plug 'kshenoy/vim-signature'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'kien/rainbow_parentheses.vim'                                     " parenthesis color
 
 " https://github.com/zhou13/vim-easyescape/
 " custom remaping of <ESC> with improvements over
@@ -112,56 +98,63 @@ Plug 'kien/rainbow_parentheses.vim'                                     " parent
 Plug 'zhou13/vim-easyescape'
 
 " Python "
-"
-"Plug 'davidhalter/jedi'                                                 " python
-"Plug 'davidhalter/jedi-vim'
+
 Plug 'heavenshell/vim-pydocstring'                                      " Generate Docstring :Pydocstring
-"Plug 'python-mode/python-mode'
+Plug 'jeetsukumaran/vim-pythonsense'
+Plug 'davidhalter/jedi-vim'
 
-" Late
 
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+" Lua "
+
+Plug 'tbastos/vim-lua'
+
+" Latex
+
+Plug 'lervag/vimtex'
+Plug 'matze/vim-tex-fold'
 
 " Snippets
 
 Plug  'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-
-Plug 'mhinz/vim-startify'
-Plug 'ryanoasis/vim-devicons'
-
 " Markdown
 
 Plug 'plasticboy/vim-markdown'
 Plug 'suan/vim-instant-markdown'
 
-" Navigation
-
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-
-" Repeat action using dot .
-Plug 'tpope/vim-repeat'
-
-" Motion
-Plug 'easymotion/vim-easymotion'
-Plug 'jeetsukumaran/vim-pythonsense'
-
-" simple minimap like atome, vscode ...
-Plug 'severin-lemaignan/vim-minimap'
-
 " Tag
+
 Plug 'majutsushi/tagbar'
+
+" Add Text objects "
+
+Plug 'wellle/targets.vim'
+
+" Writting
+
+Plug 'davidbeckingsale/writegood.vim'   " :Write{goodEnable/Disable/Toggle}
+Plug 'reedes/vim-wordy'
+Plug 'Ron89/thesaurus_query.vim'        " :Thesaurus your phrase "
+Plug 'junegunn/limelight.vim'           " :Limelight [0.0 ~ 1.0], Limelight!
+
+" MISC
+
+Plug 'dhruvasagar/vim-zoom'
+Plug 'mhinz/vim-startify'
+Plug 'ryanoasis/vim-devicons'
+
+Plug 'kien/rainbow_parentheses.vim'                                     " parenthesis color
+Plug 'rhlobo/vim-super-retab'                                           " Space2Tab, Tab2Space, RetabIndent
 
 " Todo the following plugins I should be able to understand those :)
 
-"Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch.vim'
 Plug 'romainl/vim-cool'
-Plug 'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim'        " ::Goyo{!}
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'tweekmonster/impsort.vim'
 Plug 'townk/vim-autoclose'
+Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 
 filetype plugin indent on        " For plugins to load correctly
@@ -181,14 +174,11 @@ map <F3> :NERDTreeToggle<CR>
 
 "  ------------- > Themes < ------------- "
 
-let g:one_allow_italics = 1 " I love italic for comments
-let g:airline_theme='one'
+let g:one_allow_italics = 0     " I love italic for comments (may not work correctly => disable by default)
+let g:airline_theme='wombat'
 
-colorscheme one      " [one / nord]
-"colorscheme nord " [one / nord]
-
+colorscheme one
 set background=light
-"set background=dark
 
 "  ------------- > Rainbow Options < ------------- "
 
@@ -226,8 +216,8 @@ autocmd BufWritePost *.py Tab2Space
 
 " ------------ mapping --------------
 
-let g:easyescape_chars = { "j": 1, "k": 1}
-let g:easyescape_timeout = 200
+"let g:easyescape_chars = { "j": 1, "k": 1}
+"let g:easyescape_timeout = 200
 
 cnoremap jk <ESC>
 cnoremap kj <ESC>
@@ -244,38 +234,7 @@ nnoremap <F8> :TagbarToggle<CR>
 nnoremap <silent> <Leader>b :TagbarToggle<CR>
 
 set tags=./tags,tags;$HOME
-
-" Buffer / Windows / Tabs Setup
-
-nnoremap th  :tabfirst<CR>
-nnoremap tk  :tabnext<CR>
-nnoremap tj  :tabprev<CR>
-nnoremap tl  :tablast<CR>
-nnoremap tt  :tabedit<Space>
-nnoremap tn  :tabnext<Space>
-nnoremap tm  :tabm<Space>
-nnoremap td  :tabclose<CR>
-
-nmap <leader>sw<left>  :topleft  vnew<CR>
-nmap <leader>sw<right> :botright vnew<CR>
-nmap <leader>sw<up>    :topleft  new<CR>
-nmap <leader>sw<down>  :botright new<CR>
-
-nmap <leader>s<left>   :leftabove  vnew<CR>
-nmap <leader>s<right>  :rightbelow vnew<CR>
-nmap <leader>s<up>     :leftabove  new<CR>
-nmap <leader>s<down>   :rightbelow new<CR>
-
-" Motion on Buffer / Windows / Tabs 
-
-noremap <S-l> gt                " changes tabs
-noremap <S-h> gT
-
-noremap <C-l> <C-w>l            " changes panes
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-
+"
 " Python
 
 nnoremap <leader>is :<c-u>ImpSort!<cr>
@@ -329,8 +288,6 @@ nnoremap <C-N> :bnext<CR>
 nnoremap <C-P> :bprev<CR>
 
 " ---------- TODO Test / Understand ---------------
-set hlsearch
-set incsearch
 let g:incsearch#auto_nohlsearch = 1
 map n  <Plug>(incsearch-nohl-n)
 map N  <Plug>(incsearch-nohl-N)
@@ -342,11 +299,11 @@ map g# <Plug>(incsearch-nohl-g#)
 nnoremap n nzz
 nnoremap N Nzz
 
-let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_enable_on_vim_startup = 0
 
 set laststatus=2
 let g:lightline = {
-      \ 'colorscheme': 'nord',
+      \ 'colorscheme': 'one',
       \ }
 
 set ts=2 sw=2 sts=2 et
@@ -357,7 +314,6 @@ let g:is_pythonsense_suppress_motion_keymaps = 1
 let g:AutoClosePreserveDotReg = 0
 
 " FZF Fuzzy Completion
-" ------------------------------------------------------------------------------------
 
 " This is the default extra key bindings
 let g:fzf_action = {
@@ -391,9 +347,6 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 " Enable per-command history.
-" CTRL-N and CTRL-P will be automatically bound to next-history and
-" previous-history instead of down and up. If you don't like the change,
-" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
@@ -416,8 +369,6 @@ omap <leader><tab> <plug>(fzf-maps-o)
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " Replace the default dictionary completion with fzf-based fuzzy completion
@@ -426,6 +377,149 @@ inoremap <expr> <c-x><c-k> fzf#vim#complete('cat /usr/share/dict/words')
 set rtp+=~/.fzf
 
 nnoremap <C-p> :Files<Cr>
+nnoremap <C-b> :Buffers<Cr>
 
 noremap <Leader>s :update<CR>
+
+if &term =~ '256color'
+  " disable Background Color Erase (BCE) so that color schemes
+  " render properly when inside 256-color tmux and GNU screen.
+  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+  set t_ut=
+endif
+
+
+" Quick Save
+nnoremap <S-s> :w<CR>
+
+" Yank to end of line
+nnoremap Y y$
+
+"Delete to the end of line
+nnoremap D d$
+
+" Keep search results at the center of screen
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
+
+" Switch between tabs
+nnoremap <Leader>1 1gt
+nnoremap <Leader>2 2gt
+nnoremap <Leader>3 3gt
+nnoremap <Leader>4 4gt
+nnoremap <Leader>5 5gt
+nnoremap <Leader>6 6gt
+nnoremap <Leader>7 7gt
+nnoremap <Leader>8 8gt
+nnoremap <Leader>9 9gt
+
+" Easily create a new tab.
+noremap <Leader>tN :tabnew<CR>
+
+" Easily close a tab.
+noremap <Leader>tc :tabclose<CR>
+
+" Easily move a tab.
+noremap <Leader>tm :tabmove<CR>
+
+" Easily go to next tab.
+noremap <Leader>tn :tabnext<CR>
+
+" Easily go to previous tab.
+noremap <Leader>tp :tabprevious<CR>
+
+" Disable the scratch menu at the top "
+set completeopt-=preview
+
+" Buffer / Windows / Tabs Setup
+
+nnoremap th  :tabfirst<CR>
+nnoremap tk  :tabnext<CR>
+nnoremap tj  :tabprev<CR>
+nnoremap tl  :tablast<CR>
+nnoremap tt  :tabedit<Space>
+nnoremap tn  :tabnext<Space>
+nnoremap tm  :tabm<Space>
+nnoremap td  :tabclose<CR>
+
+nmap <leader>sw<left>  :topleft  vnew<CR>
+nmap <leader>sw<right> :botright vnew<CR>
+nmap <leader>sw<up>    :topleft  new<CR>
+nmap <leader>sw<down>  :botright new<CR>
+
+nmap <leader>s<left>   :leftabove  vnew<CR>
+nmap <leader>s<right>  :rightbelow vnew<CR>
+nmap <leader>s<up>     :leftabove  new<CR>
+nmap <leader>s<down>   :rightbelow new<CR>
+
+" Motion on Buffer / Windows / Tabs
+
+noremap <S-l> gt                " changes tabs
+noremap <S-h> gT
+
+noremap <C-l> <C-w>l            " changes panes
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+
+" ALE Options "
+
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+
+" Latex Options "
+
+let g:tex_flavor = 'latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+let g:vimtex_compiler_method = 'tectonic'
+let g:vimtex_compiler_tectonic = {}
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
+" FZF Options "
+
+let $FZF_BIBTEX_SOURCES = '/home/nizam/Documents/mendeley/bibtex/library.bib'
+let $FZF_BIBTEX_CACHEDIR = '/tmp'
+
+function! s:bibtex_cite_sink(lines)
+    let r=system("bibtex-cite ", a:lines)
+    execute ':normal! i' . r
+endfunction
+
+function! s:bibtex_markdown_sink(lines)
+    let r=system("bibtex-markdown ", a:lines)
+    execute ':normal! i' . r
+endfunction
+
+nnoremap <leader>c :call fzf#run({
+                        \ 'source': 'bibtex-ls',
+                        \ 'sink*': function('<sid>bibtex_cite_sink'),
+                        \ 'up': '40%',
+                        \ 'options': '--ansi --layout=reverse-list --multi --prompt "Cite> "'})<CR>
+
+nnoremap <leader>m :call fzf#run({
+                        \ 'source': 'bibtex-ls',
+                        \ 'sink*': function('<sid>bibtex_markdown_sink'),
+                        \ 'up': '40%',
+                        \ 'options': '--ansi --layout=reverse-list --multi --prompt "Markdown> "'})<CR>
+
+set backspace=indent,eol,start
+
+" MISC "
+
+highlight Comment cterm=italic gui=italic
+
+nmap <LocalLeader>l <Plug>(Limelight)
+xmap <LocalLeader>l <Plug>(Limelight)
+
+" jumps to the pre­vi­ous spelling mis­take (1)
+" picks the first sug­ges­tion 1z=          )
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
