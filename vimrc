@@ -70,21 +70,22 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-fugitive'                                               " Git wrapper
 
 Plug 'easymotion/vim-easymotion'                                        " Navigation
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }                 " On-demand loading
-Plug 'tpope/vim-fugitive'                                               " Git wrapper
 
 Plug 'ervandew/supertab'
 
 " Theme "
 
 Plug 'flazz/vim-colorschemes'                                           " Themes
-Plug 'itchyny/lightline.vim'                                            " Themes
 Plug 'rakr/vim-one'
-Plug 'ap/vim-buftabline'
-
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'tmhedberg/SimpylFold'                                             " zc: close fold , zo: open
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'bling/vim-bufferline'
 
 " Place visual mark in the left,
 " mx: toggle mark 'x', dmx: remove mark x
@@ -101,8 +102,7 @@ Plug 'zhou13/vim-easyescape'
 
 Plug 'heavenshell/vim-pydocstring'                                      " Generate Docstring :Pydocstring
 Plug 'jeetsukumaran/vim-pythonsense'
-Plug 'davidhalter/jedi-vim'
-
+Plug 'plytophogy/vim-virtualenv'
 
 " Lua "
 
@@ -168,17 +168,20 @@ let g:python2_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
 let g:python_highlight_all = 1
 
-" Give a shortcut key to NERD Tree
-" For mac user -> "fn + F3" (see functionFlip)
 map <F3> :NERDTreeToggle<CR>
 
 "  ------------- > Themes < ------------- "
 
-let g:one_allow_italics = 0     " I love italic for comments (may not work correctly => disable by default)
-let g:airline_theme='wombat'
+let g:airline_powerline_fonts = 1
 
-colorscheme one
+colorscheme onehalflight
+let g:airline_theme='onehalflight'
 set background=light
+
+"colorscheme onehalflight
+"let g:airline_theme='onehalflight'
+"set background=light
+
 
 "  ------------- > Rainbow Options < ------------- "
 
@@ -216,8 +219,8 @@ autocmd BufWritePost *.py Tab2Space
 
 " ------------ mapping --------------
 
-"let g:easyescape_chars = { "j": 1, "k": 1}
-"let g:easyescape_timeout = 200
+let g:easyescape_chars = { "j": 1, "k": 1}
+let g:easyescape_timeout = 200
 
 cnoremap jk <ESC>
 cnoremap kj <ESC>
@@ -229,7 +232,6 @@ vnoremap Q :norm @q<cr>
 
 " Tag setup
 
-nnoremap <leader>. :CtrlPTag<cr>
 nnoremap <F8> :TagbarToggle<CR>
 nnoremap <silent> <Leader>b :TagbarToggle<CR>
 
@@ -302,10 +304,6 @@ nnoremap N Nzz
 let g:indent_guides_enable_on_vim_startup = 0
 
 set laststatus=2
-let g:lightline = {
-      \ 'colorscheme': 'one',
-      \ }
-
 set ts=2 sw=2 sts=2 et
 
 let g:is_pythonsense_suppress_motion_keymaps = 1
@@ -387,7 +385,6 @@ if &term =~ '256color'
   " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
   set t_ut=
 endif
-
 
 " Quick Save
 nnoremap <S-s> :w<CR>
@@ -519,7 +516,9 @@ highlight Comment cterm=italic gui=italic
 nmap <LocalLeader>l <Plug>(Limelight)
 xmap <LocalLeader>l <Plug>(Limelight)
 
-" jumps to the pre­vi­ous spelling mis­take (1)
-" picks the first sug­ges­tion 1z=          )
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+
+let g:virtualenv_auto_activate = 0
+let g:airline#extensions#tabline#enabled = 1
+
 
