@@ -36,7 +36,6 @@ set clipboard=unnamed
 set hlsearch
 set incsearch
 
-nnoremap <space> za
 
 augroup numbertoggle
   autocmd!
@@ -53,16 +52,10 @@ let maplocalleader=";"
 
 call plug#begin('~/.vim/plugged')
 
-" Autocompletion
-
-Plug 'ycm-core/YouCompleteMe'
-Plug 'zxqfl/tabnine-vim'
-
-" Linter
-
-Plug 'dense-analysis/ale'
 
 " Core Plugins "
+Plug 'ycm-core/YouCompleteMe'         " Autocomplete "
+Plug 'dense-analysis/ale'             " Linter "
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -74,35 +67,39 @@ Plug 'tpope/vim-fugitive'                                               " Git wr
 
 Plug 'easymotion/vim-easymotion'                                        " Navigation
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }                 " On-demand loading
-
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ervandew/supertab'
+Plug 'andymass/vim-matchup'
+Plug 'tmhedberg/SimpylFold'                                             " zc: close fold , zo: open
+Plug 'zhou13/vim-easyescape'
+Plug 'kshenoy/vim-signature'
+Plug 'haya14busa/incsearch.vim'
 
 " Theme "
 
 Plug 'flazz/vim-colorschemes'                                           " Themes
-Plug 'rakr/vim-one'
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
-Plug 'tmhedberg/SimpylFold'                                             " zc: close fold , zo: open
+Plug 'bling/vim-bufferline'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'bling/vim-bufferline'
 
-" Place visual mark in the left,
-" mx: toggle mark 'x', dmx: remove mark x
-" ]` jump to next mark ]` previous one
-Plug 'kshenoy/vim-signature'
+Plug 'kien/rainbow_parentheses.vim'                                     " parenthesis color
+Plug 'mhinz/vim-startify'
+Plug 'ryanoasis/vim-devicons'
+
+Plug 'rakr/vim-one'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'morhetz/gruvbox'
+
+" ----------------------------
+
 Plug 'ntpeters/vim-better-whitespace'
-
-" https://github.com/zhou13/vim-easyescape/
-" custom remaping of <ESC> with improvements over
-" inoremap jk <Esc>
-Plug 'zhou13/vim-easyescape'
 
 " Python "
 
+Plug 'davidhalter/jedi-vim'
 Plug 'heavenshell/vim-pydocstring'                                      " Generate Docstring :Pydocstring
 Plug 'jeetsukumaran/vim-pythonsense'
-Plug 'plytophogy/vim-virtualenv'
+"Plug 'plytophogy/vim-virtualenv'
 
 " Lua "
 
@@ -126,6 +123,7 @@ Plug 'suan/vim-instant-markdown'
 " Tag
 
 Plug 'majutsushi/tagbar'
+Plug 'vim-scripts/taglist.vim'
 
 " Add Text objects "
 
@@ -141,23 +139,20 @@ Plug 'junegunn/limelight.vim'           " :Limelight [0.0 ~ 1.0], Limelight!
 " MISC
 
 Plug 'dhruvasagar/vim-zoom'
-Plug 'mhinz/vim-startify'
-Plug 'ryanoasis/vim-devicons'
-
-Plug 'kien/rainbow_parentheses.vim'                                     " parenthesis color
 Plug 'rhlobo/vim-super-retab'                                           " Space2Tab, Tab2Space, RetabIndent
 
 " Todo the following plugins I should be able to understand those :)
 
-Plug 'haya14busa/incsearch.vim'
-Plug 'romainl/vim-cool'
 Plug 'junegunn/goyo.vim'        " ::Goyo{!}
+Plug 'romainl/vim-cool'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'townk/vim-autoclose'
 Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 
 filetype plugin indent on        " For plugins to load correctly
+
+let g:deoplete#enable_at_startup = 1
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -518,7 +513,8 @@ xmap <LocalLeader>l <Plug>(Limelight)
 
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
-let g:virtualenv_auto_activate = 0
 let g:airline#extensions#tabline#enabled = 1
+
+source ~/dotfile/vim/pythonrc.vim
 
 
