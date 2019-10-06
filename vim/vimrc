@@ -211,9 +211,9 @@ set backspace=indent,eol,start
 setlocal spell spelllang=en_us
 
 source ~/dotfile/vim/fzf.vim
-source ~/dotfile/vim/mapping.vim
 source ~/dotfile/vim/pythonrc.vim
 source ~/dotfile/vim/theme.vim
+source ~/dotfile/vim/mapping.vim
 
 " Hack
 
