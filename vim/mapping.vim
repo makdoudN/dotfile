@@ -92,5 +92,7 @@ noremap <C-k> <C-w>k
 nmap <LocalLeader>l <Plug>(Limelight)
 xmap <LocalLeader>l <Plug>(Limelight)
 
+" LINTER
 
-
+nmap <silent> <leader>aj :ALENext<cr>
+nmap <silent> <leader>ak :ALEPrevious<cr>
