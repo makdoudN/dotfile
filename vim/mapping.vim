@@ -89,10 +89,16 @@ noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 
+map <S-j> :bnext<CR>
+map <S-k> :bprev<CR>
+
 nmap <LocalLeader>l <Plug>(Limelight)
 xmap <LocalLeader>l <Plug>(Limelight)
 
 " LINTER
+
+noremap <C-n> :bnext<CR>
+noremap <C-b> :bprev<CR>
 
 nmap <silent> <leader>aj :ALENext<cr>
 nmap <silent> <leader>ak :ALEPrevious<cr>
