@@ -83,6 +83,9 @@ Plug 'zhou13/vim-easyescape'
 Plug 'kshenoy/vim-signature'
 Plug 'haya14busa/incsearch.vim'
 Plug 'qpkorr/vim-bufkill'
+"nnoremap <silent> <c-left> :CmdResizeLeft<cr> idem with up right ...
+Plug 'breuckelen/vim-resize'
+
 
 " Theme "
 
@@ -98,7 +101,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'rakr/vim-one'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'morhetz/gruvbox'
-
+Plug 'NLKNguyen/papercolor-theme'
 " ----------------------------
 
 Plug 'ntpeters/vim-better-whitespace'
@@ -212,12 +215,12 @@ setlocal spell spelllang=en_us
 
 source ~/dotfile/vim/fzf.vim
 source ~/dotfile/vim/pythonrc.vim
-source ~/dotfile/vim/theme.vim
+source ~/dotfile/vim/themes/theme_papercolor.vim
 source ~/dotfile/vim/mapping.vim
 
 " Hack
 
-if $TERM == "screen-256color"
+if $TERM == "screen-256color fdskfjdslfs"
   let &t_ut=''
   set termguicolors
             let &t_8f = "\e[38;2;%lu;%lu;%lum"
@@ -229,3 +232,4 @@ endif
 
 set pastetoggle=<F4>
 let b:ale_linters = ['flake8']
+

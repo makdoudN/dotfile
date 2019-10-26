@@ -1,13 +1,11 @@
 let g:easyescape_chars = { "j": 1, "k": 1}
 let g:easyescape_timeout = 200
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-let g:airline_theme='gruvbox'
+set background=light
+colorscheme PaperColor
 
-let g:gruvbox_italic=1
-let g:gruvbox_contrast_light='soft'
-let g:gruvbox_contrast_dark='dark'
+let g:airline_theme='papercolor'
+
 
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
@@ -28,9 +26,6 @@ let g:rbpt_colorpairs = [
     \ ['red',         'firebrick3'],
     \ ]
 
-colorscheme gruvbox
-
-set background=dark
 
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound

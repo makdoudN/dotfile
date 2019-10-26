@@ -29,15 +29,19 @@ nnoremap n nzz
 nnoremap N Nzz
 
 " Quick Save
+
 nnoremap <S-s> :w<CR>
 
 " Yank to end of line
+"
 nnoremap Y y$
 
-"Delete to the end of line
+" Delete to the end of line
+
 nnoremap D d$
 
 " Keep search results at the center of screen
+"
 nnoremap n nzz
 nnoremap N Nzz
 nnoremap * *zz
@@ -45,7 +49,8 @@ nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
 
-" Switch between tabs
+" Tab
+
 nnoremap <Leader>1 1gt
 nnoremap <Leader>2 2gt
 nnoremap <Leader>3 3gt
@@ -56,19 +61,10 @@ nnoremap <Leader>7 7gt
 nnoremap <Leader>8 8gt
 nnoremap <Leader>9 9gt
 
-" Easily create a new tab.
 noremap <Leader>tN :tabnew<CR>
-
-" Easily close a tab.
 noremap <Leader>tc :tabclose<CR>
-
-" Easily move a tab.
 noremap <Leader>tm :tabmove<CR>
-
-" Easily go to next tab.
 noremap <Leader>tn :tabnext<CR>
-
-" Easily go to previous tab.
 noremap <Leader>tp :tabprevious<CR>
 
 nmap <leader>sw<left>  :topleft  vnew<CR>
@@ -102,3 +98,6 @@ noremap <C-b> :bprev<CR>
 
 nmap <silent> <leader>aj :ALENext<cr>
 nmap <silent> <leader>ak :ALEPrevious<cr>
+
+noremap <silent> <C-S-Left> :vertical resize +1<CR>
+noremap <silent> <C-S-Right> :vertical resize 1<CR>
