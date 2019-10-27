@@ -36,7 +36,6 @@ set clipboard=unnamed
 set hlsearch
 set incsearch
 
-
 augroup numbertoggle
   autocmd!
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
@@ -48,12 +47,12 @@ augroup END
 let mapleader = ","
 let maplocalleader=";"
 
-" PLUGINS
+" ============
+" Core Plugins
+" ------------
 
 call plug#begin('~/.vim/plugged')
 
-
-" Core Plugins "
 Plug 'ycm-core/YouCompleteMe'         " Autocomplete "
 Plug 'dense-analysis/ale'             " Linter "
 
@@ -86,11 +85,11 @@ Plug 'qpkorr/vim-bufkill'
 "nnoremap <silent> <c-left> :CmdResizeLeft<cr> idem with up right ...
 Plug 'breuckelen/vim-resize'
 
-
 " Theme "
 
 Plug 'flazz/vim-colorschemes'                                           " Themes
-Plug 'bling/vim-bufferline'
+"Plug 'bling/vim-bufferline'
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -98,12 +97,14 @@ Plug 'kien/rainbow_parentheses.vim'                                     " parent
 Plug 'mhinz/vim-startify'
 Plug 'ryanoasis/vim-devicons'
 
+Plug 'romainl/flattened'
+
+Plug 'arcticicestudio/nord-vim'
 Plug 'rakr/vim-one'
+Plug 'kaicataldo/material.vim'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'morhetz/gruvbox'
-Plug 'NLKNguyen/papercolor-theme'
-" ----------------------------
-
+Plug 'rakr/vim-two-firewatch'
 Plug 'ntpeters/vim-better-whitespace'
 
 " C "
@@ -159,49 +160,43 @@ Plug 'rhlobo/vim-super-retab'                                           " Space2
 " Todo the following plugins I should be able to understand those :)
 
 Plug 'junegunn/goyo.vim'        " ::Goyo{!}
-Plug 'romainl/vim-cool'
-Plug 'nathanaelkane/vim-indent-guides'
+"Plug 'romainl/vim-cool'
+"Plug 'nathanaelkane/vim-indent-guides'
 Plug 'townk/vim-autoclose'
 Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 
 filetype plugin indent on        " For plugins to load correctly
 
-let g:UltiSnipsEditSplit="vertical"
-
-" Python path
-
-let g:python2_host_prog = '/usr/bin/python'
-let g:python3_host_prog = '/usr/bin/python3'
-let g:python_highlight_all = 1
+" Tags
 
 set tags=./tags,tags;$HOME
 
-" Python
-
-nnoremap <leader>is :<c-u>ImpSort!<cr>
-
-" YCM
+" Autocompletion: YCM
 
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
-" Snippets
+" Linter: ALE
 
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-let g:UltiSnipsSnippetDirectories = [
-            \ "/home/nizam/snippets/Ultisnips",
-            \ "UltiSnips"
-            \ ]
+let g:ale_fix_on_save = 1
+let g:ale_sign_error = '😡'
+let g:ale_sign_warning = '😭'
+let g:ale_linters_explicit = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+let g:ale_set_highlights = 0
 
-"set rtp+=~/snippets
+let g:airline#extensions#ale#enabled = 1
 
-" Language spelling
+nnoremap <space>l :lnext<CR>
+nnoremap <space>p :lprevious<CR>
+nnoremap <space>r :lrewind<CR>
 
-let g:is_pythonsense_suppress_motion_keymaps = 1
+let b:ale_linters = ['flake8']
+
+set omnifunc=ale#completion#OmniFunc
 
 " https://stackoverflow.com/questions/13621845/vim-pumvisible-call-putting-in-random-text
 let g:AutoClosePreserveDotReg = 0
@@ -210,26 +205,16 @@ set laststatus=2
 set ts=2 sw=2 sts=2 et
 set backspace=indent,eol,start
 
-
 setlocal spell spelllang=en_us
+"set nospell
 
 source ~/dotfile/vim/fzf.vim
 source ~/dotfile/vim/pythonrc.vim
-source ~/dotfile/vim/themes/theme_papercolor.vim
+source ~/dotfile/vim/snippets/snippets.vim
+source ~/dotfile/vim/themes/theme_nord.vim
 source ~/dotfile/vim/mapping.vim
 
 " Hack
 
-if $TERM == "screen-256color fdskfjdslfs"
-  let &t_ut=''
-  set termguicolors
-            let &t_8f = "\e[38;2;%lu;%lu;%lum"
-            let &t_8b = "\e[48;2;%lu;%lu;%lum"
-    hi Normal guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE
-    let &t_ti = &t_ti . "\033]10;#f6f3e8\007\033]11;#242424\007"
-    let &t_te = &t_te . "\033]110\007\033]111\007"
-endif
-
 set pastetoggle=<F4>
-let b:ale_linters = ['flake8']
 

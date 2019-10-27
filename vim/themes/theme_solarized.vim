@@ -1,11 +1,7 @@
 let g:easyescape_chars = { "j": 1, "k": 1}
 let g:easyescape_timeout = 200
 
-set background=light " or light if you prefer the light version
-let g:two_firewatch_italics=1
-colo two-firewatch
-
-let g:airline_theme='twofirewatch' " if you have Airline installed and want the associated theme
+colorscheme flattened_light
 
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
