@@ -4,6 +4,11 @@ let g:easyescape_timeout = 200
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
+let g:nord_italic = 1
+let g:nord_underline = 1
+let g:nord_italic_comments = 1
+
+
 colorscheme nord
 
 let g:rbpt_colorpairs = [

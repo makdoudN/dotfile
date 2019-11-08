@@ -164,6 +164,8 @@ Plug 'junegunn/goyo.vim'        " ::Goyo{!}
 "Plug 'nathanaelkane/vim-indent-guides'
 Plug 'townk/vim-autoclose'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'chrisbra/colorizer'
+
 call plug#end()
 
 filetype plugin indent on        " For plugins to load correctly
