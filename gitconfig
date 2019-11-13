@@ -1,0 +1,15 @@
+[user]
+	email = nizam.makdoud@gmail.com
+	name = makdoudN
+[credential]
+	helper = cache --timeout=100000
+[init]
+	templatedir = ~/.git_template
+[alias]
+	ctags = !.git/hooks/ctags
+	update = !git pull && git submodule update --init --recursive
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

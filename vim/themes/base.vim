@@ -1,18 +1,34 @@
 let g:easyescape_chars = { "j": 1, "k": 1}
 let g:easyescape_timeout = 200
-let g:airline_theme = 'tenderplus'
+
+" Visualize indent
+
+let g:indentLine_char = ':'
+let g:indentLine_setColors = 0
+
+" ALE: Extension
+"
+let g:airline#extensions#ale#enabled = 1
+
+let g:ale_fix_on_save = 1
+let g:ale_sign_error = '🤬'
+let g:ale_sign_warning = '🥴'
+let g:ale_linters_explicit = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+let g:ale_set_highlights = 0
+
+"let g:ale_sign_error = '✘'
+"let g:ale_sign_warning = '⚠'
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+
+" Appealing visual for airline :)
 
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
-
-if (has("termguicolors"))
- set termguicolors
-endif
-
-syntax enable
-colorscheme tender
-
+" Rainbow
 
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
@@ -38,5 +54,6 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
 
 
