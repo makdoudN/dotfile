@@ -88,7 +88,6 @@ Plug 'breuckelen/vim-resize'
 " Theme "
 
 Plug 'flazz/vim-colorschemes'                                           " Themes
-"Plug 'bling/vim-bufferline'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -98,6 +97,7 @@ Plug 'mhinz/vim-startify'
 Plug 'ryanoasis/vim-devicons'
 
 Plug 'romainl/flattened'
+Plug 'yggdroot/indentline'
 
 Plug 'arcticicestudio/nord-vim'
 Plug 'rakr/vim-one'
@@ -106,6 +106,8 @@ Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'morhetz/gruvbox'
 Plug 'rakr/vim-two-firewatch'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'jacoborus/tender'
+Plug 'mhinz/vim-signify'
 
 " C "
 
@@ -180,17 +182,6 @@ let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
-" Linter: ALE
-
-let g:ale_fix_on_save = 1
-let g:ale_sign_error = '😡'
-let g:ale_sign_warning = '😭'
-let g:ale_linters_explicit = 1
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 0
-let g:ale_set_highlights = 0
-
-let g:airline#extensions#ale#enabled = 1
 
 nnoremap <space>l :lnext<CR>
 nnoremap <space>p :lprevious<CR>
@@ -213,9 +204,9 @@ setlocal spell spelllang=en_us
 source ~/dotfile/vim/fzf.vim
 source ~/dotfile/vim/pythonrc.vim
 source ~/dotfile/vim/snippets/snippets.vim
-source ~/dotfile/vim/themes/theme_nord.vim
+source ~/dotfile/vim/themes/theme_gruvbox.vim
 source ~/dotfile/vim/mapping.vim
-
+source ~/dotfile/vim/latex.vim
 " Hack
 
 set pastetoggle=<F4>
