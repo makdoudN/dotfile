@@ -69,7 +69,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-endwise'
 
 Plug 'yuttie/comfortable-motion.vim'
-
+Plug 'godlygeek/tabular'
 Plug 'easymotion/vim-easymotion'                                        " Navigation
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }                 " On-demand loading
@@ -97,73 +97,54 @@ Plug 'mhinz/vim-startify'
 Plug 'ryanoasis/vim-devicons'
 
 Plug 'romainl/flattened'
-Plug 'yggdroot/indentline'
 
 Plug 'arcticicestudio/nord-vim'
-Plug 'rakr/vim-one'
-Plug 'kaicataldo/material.vim'
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'morhetz/gruvbox'
-Plug 'rakr/vim-two-firewatch'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'jacoborus/tender'
-Plug 'mhinz/vim-signify'
+Plug 'nathanaelkane/vim-indent-guides'
 
+Plug 'mhinz/vim-signify'
 " C "
 
 
 " Python "
-
 Plug 'davidhalter/jedi-vim'
 Plug 'heavenshell/vim-pydocstring'                                      " Generate Docstring :Pydocstring
 Plug 'jeetsukumaran/vim-pythonsense'
 Plug 'plytophogy/vim-virtualenv'
 
-" Lua "
-
-Plug 'tbastos/vim-lua'
-
 " Latex
-
 Plug 'lervag/vimtex'
 Plug 'matze/vim-tex-fold'
 
 " Snippets
-
 Plug  'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 " Markdown
-
 Plug 'plasticboy/vim-markdown'
 Plug 'suan/vim-instant-markdown'
 
 " Tag
-
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/taglist.vim'
 
 " Add Text objects "
-
 Plug 'wellle/targets.vim'
 
 " Writting
-
 Plug 'davidbeckingsale/writegood.vim'   " :Write{goodEnable/Disable/Toggle}
 Plug 'reedes/vim-wordy'
 Plug 'Ron89/thesaurus_query.vim'        " :Thesaurus your phrase "
 Plug 'junegunn/limelight.vim'           " :Limelight [0.0 ~ 1.0], Limelight!
 
 " MISC
-
 Plug 'dhruvasagar/vim-zoom'
 Plug 'rhlobo/vim-super-retab'                                           " Space2Tab, Tab2Space, RetabIndent
 
 " Todo the following plugins I should be able to understand those :)
-
 Plug 'junegunn/goyo.vim'        " ::Goyo{!}
-"Plug 'romainl/vim-cool'
-"Plug 'nathanaelkane/vim-indent-guides'
+Plug 'romainl/vim-cool'
 Plug 'townk/vim-autoclose'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'chrisbra/colorizer'
@@ -211,3 +192,6 @@ source ~/dotfile/vim/latex.vim
 
 set pastetoggle=<F4>
 
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
