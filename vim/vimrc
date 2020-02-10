@@ -53,10 +53,14 @@ let maplocalleader=";"
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'davidhalter/jedi-vim'
 Plug 'ycm-core/YouCompleteMe'         " Autocomplete "
 Plug 'dense-analysis/ale'             " Linter "
 
 Plug 'mileszs/ack.vim'
+
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }                 " On-demand loading
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -68,13 +72,9 @@ Plug 'tpope/vim-fugitive'                                               " Git wr
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-endwise'
 
-Plug 'yuttie/comfortable-motion.vim'
+"Plug 'yuttie/comfortable-motion.vim'
 Plug 'godlygeek/tabular'
 Plug 'easymotion/vim-easymotion'                                        " Navigation
-
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }                 " On-demand loading
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-
 Plug 'ervandew/supertab'
 Plug 'andymass/vim-matchup'
 Plug 'tmhedberg/SimpylFold'                                             " zc: close fold , zo: open
@@ -88,7 +88,6 @@ Plug 'breuckelen/vim-resize'
 " Theme "
 
 Plug 'flazz/vim-colorschemes'                                           " Themes
-
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -96,7 +95,7 @@ Plug 'kien/rainbow_parentheses.vim'                                     " parent
 Plug 'mhinz/vim-startify'
 Plug 'ryanoasis/vim-devicons'
 
-Plug 'romainl/flattened'
+"Plug 'romainl/flattened'
 
 Plug 'arcticicestudio/nord-vim'
 Plug 'morhetz/gruvbox'
@@ -108,10 +107,9 @@ Plug 'mhinz/vim-signify'
 
 
 " Python "
-Plug 'davidhalter/jedi-vim'
+
 Plug 'heavenshell/vim-pydocstring'                                      " Generate Docstring :Pydocstring
 Plug 'jeetsukumaran/vim-pythonsense'
-Plug 'plytophogy/vim-virtualenv'
 
 " Latex
 Plug 'lervag/vimtex'
@@ -122,8 +120,8 @@ Plug  'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 " Markdown
-Plug 'plasticboy/vim-markdown'
-Plug 'suan/vim-instant-markdown'
+"Plug 'plasticboy/vim-markdown'
+"Plug 'suan/vim-instant-markdown'
 
 " Tag
 Plug 'majutsushi/tagbar'
