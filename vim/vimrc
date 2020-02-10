@@ -100,14 +100,14 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'arcticicestudio/nord-vim'
 Plug 'morhetz/gruvbox'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'nathanaelkane/vim-indent-guides'
+"Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'mhinz/vim-signify'
+
 " C "
 
 
 " Python "
-
 Plug 'heavenshell/vim-pydocstring'                                      " Generate Docstring :Pydocstring
 Plug 'jeetsukumaran/vim-pythonsense'
 
