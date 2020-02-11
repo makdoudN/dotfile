@@ -9,6 +9,8 @@ filetype off                     " Helps force plugins to load correctly when it
 syntax enable
 syntax on
 
+set cmdheight=2                  " TODO: Understand "
+set shortmess=a                  " TODO: Understand "
 set smartindent
 set ruler                         " Show the line and column numbers of the cursor.
 set wrap
@@ -193,3 +195,34 @@ set pastetoggle=<F4>
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
+
+
+function! s:goyo_enter()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status off
+    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  endif
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  set nonumber
+  set norelativenumber
+  autocmd! numbertoggle
+  "Limelight
+endfunction
+
+function! s:goyo_leave()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status on
+    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  endif
+  set showmode
+  set showcmd
+  set scrolloff=5
+  autocmd numbertoggle BufEnter *
+  AirlineRefresh
+  "Limelight!
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
