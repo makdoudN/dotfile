@@ -49,11 +49,18 @@ augroup END
 let mapleader = ","
 let maplocalleader=";"
 
+if (has("termguicolors"))
+  set termguicolors
+endif
+
 " ============
 " Core Plugins
 " ------------
 
 call plug#begin('~/.vim/plugged')
+
+" Base language pack for vim.
+Plug 'sheerun/vim-polyglot'
 
 Plug 'davidhalter/jedi-vim'
 Plug 'ycm-core/YouCompleteMe'         " Autocomplete "
@@ -89,22 +96,23 @@ Plug 'breuckelen/vim-resize'
 
 " Theme "
 
+Plug 'arcticicestudio/nord-vim'
+Plug 'rakr/vim-one'
 Plug 'flazz/vim-colorschemes'                                           " Themes
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'altercation/vim-colors-solarized'
+Plug 'altercation/solarized'
 
+Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
+Plug 'morhetz/gruvbox'
+
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'mhinz/vim-signify'
 Plug 'kien/rainbow_parentheses.vim'                                     " parenthesis color
 Plug 'mhinz/vim-startify'
 Plug 'ryanoasis/vim-devicons'
 
-"Plug 'romainl/flattened'
-
-Plug 'arcticicestudio/nord-vim'
-Plug 'morhetz/gruvbox'
-Plug 'ntpeters/vim-better-whitespace'
-"Plug 'nathanaelkane/vim-indent-guides'
-
-Plug 'mhinz/vim-signify'
 
 " C "
 
@@ -115,15 +123,19 @@ Plug 'jeetsukumaran/vim-pythonsense'
 
 " Latex
 Plug 'lervag/vimtex'
-Plug 'matze/vim-tex-fold'
+"Plug 'vim-latex/vim-latex'
+"Plug 'matze/vim-tex-fold'
 
 " Snippets
 Plug  'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 " Markdown
-"Plug 'plasticboy/vim-markdown'
-"Plug 'suan/vim-instant-markdown'
+Plug 'plasticboy/vim-markdown'
+Plug 'suan/vim-instant-markdown'
+
+" Julia
+Plug 'JuliaEditorSupport/julia-vim'
 
 " Tag
 Plug 'majutsushi/tagbar'
@@ -141,6 +153,7 @@ Plug 'junegunn/limelight.vim'           " :Limelight [0.0 ~ 1.0], Limelight!
 " MISC
 Plug 'dhruvasagar/vim-zoom'
 Plug 'rhlobo/vim-super-retab'                                           " Space2Tab, Tab2Space, RetabIndent
+Plug 'nathanaelkane/vim-indent-guides'
 
 " Todo the following plugins I should be able to understand those :)
 Plug 'junegunn/goyo.vim'        " ::Goyo{!}
@@ -192,7 +205,7 @@ source ~/dotfile/vim/latex.vim
 
 set pastetoggle=<F4>
 
-let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_enable_on_vim_startup = 0
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 
@@ -208,6 +221,7 @@ function! s:goyo_enter()
   set nonumber
   set norelativenumber
   autocmd! numbertoggle
+  IndentGuidesDisable
   "Limelight
 endfunction
 
@@ -221,8 +235,16 @@ function! s:goyo_leave()
   set scrolloff=5
   autocmd numbertoggle BufEnter *
   AirlineRefresh
+  IndentGuidesEnable
   "Limelight!
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+let g:polyglot_disabled = ['python', 'latex']
+
+nmap <silent> <buffer> gK <Plug>(kite-docs)
+set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
+set laststatus=2  " always display the status line
+let g:jedi#auto_initialization = 0
