@@ -1,14 +1,12 @@
-" BASE
+let mapleader = ","
+let maplocalleader=";"
 
+filetype off                     " Helps force plugins to load correctly when it is turned back on below
+syntax enable
+syntax on
 set enc=utf-8
 set fileencoding=utf-8
 set nocompatible                 " Don't try to be vi compatible
-
-filetype off                     " Helps force plugins to load correctly when it is turned back on below
-
-syntax enable
-syntax on
-
 set cmdheight=2                  " TODO: Understand "
 set shortmess=a                  " TODO: Understand "
 set smartindent
@@ -37,6 +35,7 @@ set number relativenumber
 set clipboard=unnamed
 set hlsearch
 set incsearch
+set backspace=indent,eol,start     " https://vim.fandom.com/wiki/Backspace_and_delete_problems
 
 augroup numbertoggle
   autocmd!
@@ -44,207 +43,14 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
-" Leader Mapping
-
-let mapleader = ","
-let maplocalleader=";"
-
-if (has("termguicolors"))
-  set termguicolors
-endif
-
-" ============
-" Core Plugins
-" ------------
-
-call plug#begin('~/.vim/plugged')
-
-" Base language pack for vim.
-Plug 'sheerun/vim-polyglot'
-
-Plug 'davidhalter/jedi-vim'
-Plug 'ycm-core/YouCompleteMe'         " Autocomplete "
-Plug 'dense-analysis/ale'             " Linter "
-
-Plug 'mileszs/ack.vim'
-
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }                 " On-demand loading
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-fugitive'                                               " Git wrapper
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-endwise'
-
-"Plug 'yuttie/comfortable-motion.vim'
-Plug 'godlygeek/tabular'
-Plug 'easymotion/vim-easymotion'                                        " Navigation
-Plug 'ervandew/supertab'
-Plug 'andymass/vim-matchup'
-Plug 'tmhedberg/SimpylFold'                                             " zc: close fold , zo: open
-Plug 'zhou13/vim-easyescape'
-Plug 'kshenoy/vim-signature'
-Plug 'haya14busa/incsearch.vim'
-Plug 'qpkorr/vim-bufkill'
-"nnoremap <silent> <c-left> :CmdResizeLeft<cr> idem with up right ...
-Plug 'breuckelen/vim-resize'
-
-" Theme "
-
-Plug 'arcticicestudio/nord-vim'
-Plug 'rakr/vim-one'
-Plug 'flazz/vim-colorschemes'                                           " Themes
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'altercation/vim-colors-solarized'
-Plug 'altercation/solarized'
-
-Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
-Plug 'morhetz/gruvbox'
-
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'mhinz/vim-signify'
-Plug 'kien/rainbow_parentheses.vim'                                     " parenthesis color
-Plug 'mhinz/vim-startify'
-Plug 'ryanoasis/vim-devicons'
-
-
-" C "
-
-
-" Python "
-Plug 'heavenshell/vim-pydocstring'                                      " Generate Docstring :Pydocstring
-Plug 'jeetsukumaran/vim-pythonsense'
-
-" Latex
-Plug 'lervag/vimtex'
-"Plug 'vim-latex/vim-latex'
-"Plug 'matze/vim-tex-fold'
-
-" Snippets
-Plug  'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-
-" Markdown
-Plug 'plasticboy/vim-markdown'
-Plug 'suan/vim-instant-markdown'
-
-" Julia
-Plug 'JuliaEditorSupport/julia-vim'
-
-" Tag
-Plug 'majutsushi/tagbar'
-Plug 'vim-scripts/taglist.vim'
-
-" Add Text objects "
-Plug 'wellle/targets.vim'
-
-" Writting
-Plug 'davidbeckingsale/writegood.vim'   " :Write{goodEnable/Disable/Toggle}
-Plug 'reedes/vim-wordy'
-Plug 'Ron89/thesaurus_query.vim'        " :Thesaurus your phrase "
-Plug 'junegunn/limelight.vim'           " :Limelight [0.0 ~ 1.0], Limelight!
-
-" MISC
-Plug 'dhruvasagar/vim-zoom'
-Plug 'rhlobo/vim-super-retab'                                           " Space2Tab, Tab2Space, RetabIndent
-Plug 'nathanaelkane/vim-indent-guides'
-
-" Todo the following plugins I should be able to understand those :)
-Plug 'junegunn/goyo.vim'        " ::Goyo{!}
-Plug 'romainl/vim-cool'
-Plug 'townk/vim-autoclose'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'chrisbra/colorizer'
-
-call plug#end()
-
-filetype plugin indent on        " For plugins to load correctly
-
-" Tags
-
-set tags=./tags,tags;$HOME
-
-" Autocompletion: YCM
-
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-
-
-nnoremap <space>l :lnext<CR>
-nnoremap <space>p :lprevious<CR>
-nnoremap <space>r :lrewind<CR>
-
-let b:ale_linters = ['flake8']
-
-set omnifunc=ale#completion#OmniFunc
-
-" https://stackoverflow.com/questions/13621845/vim-pumvisible-call-putting-in-random-text
-let g:AutoClosePreserveDotReg = 0
-
-set laststatus=2
-set ts=2 sw=2 sts=2 et
-set backspace=indent,eol,start
-
-setlocal spell spelllang=en_us
-"set nospell
-
-source ~/dotfile/vim/fzf.vim
-source ~/dotfile/vim/pythonrc.vim
-source ~/dotfile/vim/snippets/snippets.vim
-source ~/dotfile/vim/themes/theme_gruvbox.vim
+source ~/dotfile/vim/plugin.vim
 source ~/dotfile/vim/mapping.vim
-source ~/dotfile/vim/latex.vim
-" Hack
+source ~/dotfile/vim/fzf.vim
+source ~/dotfile/vim/ale.vim
+source ~/dotfile/vim/coc.vim
 
-set pastetoggle=<F4>
-
-let g:indent_guides_enable_on_vim_startup = 0
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
+source ~/dotfile/vim/themes/theme_nord.vim
 
 
-function! s:goyo_enter()
-  if executable('tmux') && strlen($TMUX)
-    silent !tmux set status off
-    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
-  endif
-  set noshowmode
-  set noshowcmd
-  set scrolloff=999
-  set nonumber
-  set norelativenumber
-  autocmd! numbertoggle
-  IndentGuidesDisable
-  "Limelight
-endfunction
-
-function! s:goyo_leave()
-  if executable('tmux') && strlen($TMUX)
-    silent !tmux set status on
-    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
-  endif
-  set showmode
-  set showcmd
-  set scrolloff=5
-  autocmd numbertoggle BufEnter *
-  AirlineRefresh
-  IndentGuidesEnable
-  "Limelight!
-endfunction
-
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
-
-let g:polyglot_disabled = ['python', 'latex']
-
-nmap <silent> <buffer> gK <Plug>(kite-docs)
-set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
-set laststatus=2  " always display the status line
-let g:jedi#auto_initialization = 0
+" how-can-i-clear-word-highlighting-in-the-current-document-e-g-such-as-after-se
+autocmd InsertEnter * :let @/=""

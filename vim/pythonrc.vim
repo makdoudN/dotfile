@@ -1,7 +1,7 @@
 " Python Base Configuration
 
 let g:python2_host_prog = '/usr/bin/python'
-let g:python3_host_prog = '/home/nizam/.virtualenvs/rl/bin/python'
+let g:python3_host_prog = '/home/nizam/miniconda3/envs/py3.8/bin/python'
 let g:python_highlight_all = 1
 
 let g:jedi#goto_command = "<leader>d"

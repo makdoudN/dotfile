@@ -1,15 +1,7 @@
-
 map <F3> :NERDTreeToggle<CR>
-
-cnoremap jk <ESC>
-cnoremap kj <ESC>
-
-" Macro
 
 nnoremap Q @q                   " apply macro (qq: recording, q stop recording, Q apply)
 vnoremap Q :norm @q<cr>
-
-" Tag setup
 
 nnoremap <F8> :TagbarToggle<CR>
 nnoremap <silent> <Leader>b :TagbarToggle<CR>
@@ -27,19 +19,10 @@ map g# <Plug>(incsearch-nohl-g#)
 
 nnoremap n nzz
 nnoremap N Nzz
-
-" Quick Save
-
 nnoremap <S-s> :w<CR>
-
-" Yank to end of line
-"
 nnoremap Y y$
-
-" Delete to the end of line
-
 nnoremap D d$
-
+"
 " Keep search results at the center of screen
 "
 nnoremap n nzz
@@ -48,9 +31,9 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
-
+"
 " Tab
-
+"
 nnoremap <Leader>1 1gt
 nnoremap <Leader>2 2gt
 nnoremap <Leader>3 3gt
@@ -88,16 +71,3 @@ noremap <C-k> <C-w>k
 map <S-j> :bnext<CR>
 map <S-k> :bprev<CR>
 
-nmap <LocalLeader>l <Plug>(Limelight)
-xmap <LocalLeader>l <Plug>(Limelight)
-
-" LINTER
-
-noremap <C-n> :bnext<CR>
-noremap <C-b> :bprev<CR>
-
-nmap <silent> <leader>aj :ALENext<cr>
-nmap <silent> <leader>ak :ALEPrevious<cr>
-
-noremap <silent> <C-S-Left> :vertical resize +1<CR>
-noremap <silent> <C-S-Right> :vertical resize 1<CR>
