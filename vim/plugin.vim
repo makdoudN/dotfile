@@ -1,32 +1,33 @@
 
 call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}          " Autocompletion
-Plug 'davidhalter/jedi-vim'                              " Autocompletion
 Plug 'dense-analysis/ale'                                " Linter
 Plug 'junegunn/fzf.vim'                                  " Fast Search
+Plug 'sheerun/vim-polyglot'
 
 Plug 'tpope/vim-repeat'                                  " . to repeat command
 Plug 'tpope/vim-surround'                                " Add s (textobject ?)
 
-Plug 'majutsushi/tagbar'                                 " List Tag.
+Plug 'liuchengxu/vista.vim'                              " Tagbar ++
 Plug 'tmhedberg/SimpylFold'                              " Fold python class easily za zo
 Plug 'zhou13/vim-easyescape'                             " Improve latency with jk kj jj is remap to ESC
 
+Plug 'psliwka/vim-smoothie'
 Plug 'easymotion/vim-easymotion'                         " Navigation
 Plug 'kshenoy/vim-signature'                             " [Workflow] Place and Toggle Mark (mx, dmx, ]` ]`)
 Plug 'haya14busa/incsearch.vim'                          " TODO
 Plug 'qpkorr/vim-bufkill'                                "  bd, BD to kill buffer
 Plug 'honza/vim-snippets'                                " [Snippets]
-
+"
 " Motion
+"
 Plug 'jeetsukumaran/vim-pythonsense'                     " [Motion] Add Motion to improve productivity in python
 Plug 'andymass/vim-matchup'                              " [Motion] Add motions around keyword (g%, [%, ]%, z&)
-
+"
 " [Themes]
-Plug 'sonph/onehalf'
-Plug 'morhetz/gruvbox'
-Plug 'arcticicestudio/nord-vim'
+"
 Plug 'mhinz/vim-startify'
+Plug 'arcticicestudio/nord-vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'flazz/vim-colorschemes'
 Plug 'vim-airline/vim-airline'
@@ -36,8 +37,8 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-
-
+"Plug 'ncm2/float-preview.nvim'
+"Plug 'itchyny/calendar'
 
 call plug#end()
 
@@ -53,3 +54,104 @@ cnoremap kj <ESC>
 let g:indent_guides_enable_on_vim_startup = 0
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
+
+
+" airline
+let g:airline_powerline_fonts = 1
+let g:airline_extensions = ['branch', 'hunks', 'coc', 'tabline']
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#default#layout = [['a', 'b', 'c'], ['x', 'z', 'warning', 'error']]
+let g:airline_skip_empty_sections = 1
+let airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
+let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
+let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+"
+" Python Base Configuration
+"
+let g:python2_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/home/nizam/miniconda3/envs/py3.8/bin/python'
+let g:python_highlight_all = 1
+
+let g:jedi#goto_command = "<leader>d"
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_definitions_command = ""
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>n"
+let g:jedi#completions_command = "<C-Space>"
+let g:jedi#rename_command = "<leader>r"
+autocmd BufWritePost *.py Tab2Space
+" Sort import packages.
+nnoremap <leader>is :<c-u>ImpSort!<cr>
+let g:is_pythonsense_suppress_motion_keymaps = 1
+
+" =================================================================
+" Add Tab2Space scripts.
+" =================================================================
+" Return indent (all whitespace at start of a line), converted from
+" tabs to spaces if what = 1, or from spaces to tabs otherwise.
+" When converting to tabs, result has no redundant spaces.
+" =================================================================
+function! Indenting(indent, what, cols)
+  let spccol = repeat(' ', a:cols)
+  let result = substitute(a:indent, spccol, '\t', 'g')
+  let result = substitute(result, ' \+\ze\t', '', 'g')
+  if a:what == 1
+    let result = substitute(result, '\t', spccol, 'g')
+  endif
+  return result
+endfunction
+
+" Convert whitespace used for indenting (before first non-whitespace).
+" what = 0 (convert spaces to tabs), or 1 (convert tabs to spaces).
+" cols = string with number of columns per tab, or empty to use 'tabstop'.
+" The cursor position is restored, but the cursor will be in a different
+" column when the number of characters in the indent of the line is changed.
+function! IndentConvert(line1, line2, what, cols)
+  let savepos = getpos('.')
+  let cols = empty(a:cols) ? &tabstop : a:cols
+  execute a:line1 . ',' . a:line2 . 's/^\s\+/\=Indenting(submatch(0), a:what, cols)/e'
+  call histdel('search', -1)
+  call setpos('.', savepos)
+endfunction
+command! -nargs=? -range=% Space2Tab call IndentConvert(<line1>,<line2>,0,<q-args>)
+command! -nargs=? -range=% Tab2Space call IndentConvert(<line1>,<line2>,1,<q-args>)
+command! -nargs=? -range=% RetabIndent call IndentConvert(<line1>,<line2>,&et,<q-args>)
+
+
+" =============================================================================
+" VISTA Options
+" =============================================================================
+" How each level is indented and what to prepend.
+" This could make the display more compact or more spacious.
+" e.g., more compact: ["▸ ", ""]
+" Note: this option only works the LSP executives, doesn't work for `:Vista ctags`.
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+" Executive used when opening vista sidebar without specifying it.
+" See all the avaliable executives via `:echo g:vista#executives`.
+let g:vista_default_executive = 'ctags'
+" Set the executive for some filetypes explicitly. Use the explicit executive
+" instead of the default one for these filetypes when using `:Vista` without
+" specifying the executive.
+let g:vista_executive_for = {
+  \ 'cpp': 'vim_lsp',
+  \ 'php': 'vim_lsp',
+  \ }
+" Declare the command including the executable and options used to generate ctags output
+" for some certain filetypes.The file path will be appened to your custom command.
+" For example:
+let g:vista_ctags_cmd = {
+      \ 'haskell': 'hasktags -x -o - -c',
+      \ }
+" To enable fzf's preview window set g:vista_fzf_preview.
+" The elements of g:vista_fzf_preview will be passed as arguments to fzf#vim#with_preview()
+" For example:
+let g:vista_fzf_preview = ['right:50%']
+" Ensure you have installed some decent font to show these pretty symbols, then you can enable icon for the kind.
+let g:vista#renderer#enable_icon = 1
+" The default icons can't be suitable for all the filetypes, you can extend it as you wish.
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }

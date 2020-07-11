@@ -52,5 +52,4 @@ source ~/dotfile/vim/coc.vim
 source ~/dotfile/vim/themes/theme_nord.vim
 
 
-" how-can-i-clear-word-highlighting-in-the-current-document-e-g-such-as-after-se
 autocmd InsertEnter * :let @/=""

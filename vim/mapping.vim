@@ -1,11 +1,8 @@
 map <F3> :NERDTreeToggle<CR>
-
 nnoremap Q @q                   " apply macro (qq: recording, q stop recording, Q apply)
 vnoremap Q :norm @q<cr>
-
-nnoremap <F8> :TagbarToggle<CR>
+nnoremap <F8> :Vista finder coc<CR>
 nnoremap <silent> <Leader>b :TagbarToggle<CR>
-
 " Correct the spelling error with the first suggestion.
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
