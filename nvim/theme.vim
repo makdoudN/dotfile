@@ -54,14 +54,16 @@ let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
 let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 
-let g:airline_theme='nord'
+"let g:airline_theme='nord'
+let g:airline_theme='gruvbox'
+"let g:gruvbox_improved_strings=1
 let g:nord_cursor_line_number_background = 1
 let g:nord_bold = 1
 let g:nord_italic = 1
 let g:nord_underline = 1
 let g:nord_italic_comments = 1
 
-colorscheme nord
+colorscheme gruvbox
 set background=dark
 
 

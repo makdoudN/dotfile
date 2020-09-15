@@ -1,6 +1,9 @@
 
 call plug#begin('~/.vim/plugged')
-Plug 'neoclide/coc.nvim', {'branch': 'release'}          " Autocompletion
+Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+
+
 Plug 'dense-analysis/ale'                                " Linter
 Plug 'junegunn/fzf.vim'                                  " Fast Search
 Plug 'sheerun/vim-polyglot'
@@ -27,6 +30,7 @@ Plug 'andymass/vim-matchup'                              " [Motion] Add motions 
 "
 " [Themes]
 "
+Plug 'morhetz/gruvbox'
 Plug 'mhinz/vim-startify'
 Plug 'arcticicestudio/nord-vim'
 Plug 'ryanoasis/vim-devicons'
@@ -41,7 +45,6 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 "
-Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 Plug 'voldikss/vim-floaterm'
 Plug 'itchyny/calendar.vim'
 call plug#end()
