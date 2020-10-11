@@ -56,6 +56,7 @@ let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_
 
 "let g:airline_theme='nord'
 let g:airline_theme='gruvbox'
+let g:gruvbox_contrast_light='dark'
 "let g:gruvbox_improved_strings=1
 let g:nord_cursor_line_number_background = 1
 let g:nord_bold = 1
