@@ -8,10 +8,10 @@ Plug 'dense-analysis/ale'                                " Linter
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
 Plug 'tpope/vim-repeat'                                  " . to repeat command
 Plug 'tpope/vim-surround'                                " Add s (textobject ?)
-
 Plug 'liuchengxu/vista.vim'                              " Tagbar ++
 Plug 'tmhedberg/SimpylFold'                              " Fold python class easily za zo
 Plug 'zhou13/vim-easyescape'                             " Improve latency with jk kj jj is remap to ESC
