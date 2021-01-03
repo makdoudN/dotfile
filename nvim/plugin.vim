@@ -2,20 +2,17 @@
 call plug#begin('~/.vim/plugged')
 Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-
-
 Plug 'dense-analysis/ale'                                " Linter
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
-
+Plug 'greyblake/vim-preview'
 Plug 'tpope/vim-repeat'                                  " . to repeat command
 Plug 'tpope/vim-surround'                                " Add s (textobject ?)
 Plug 'liuchengxu/vista.vim'                              " Tagbar ++
 Plug 'tmhedberg/SimpylFold'                              " Fold python class easily za zo
 Plug 'zhou13/vim-easyescape'                             " Improve latency with jk kj jj is remap to ESC
-
 Plug 'psliwka/vim-smoothie'
 Plug 'easymotion/vim-easymotion'                         " Navigation
 Plug 'kshenoy/vim-signature'                             " [Workflow] Place and Toggle Mark (mx, dmx, ]` ]`)
@@ -23,17 +20,10 @@ Plug 'haya14busa/incsearch.vim'                          " TODO
 Plug 'qpkorr/vim-bufkill'                                "  bd, BD to kill buffer
 Plug 'honza/vim-snippets'                                " [Snippets]
 Plug 'majutsushi/tagbar'
-"
-" Motion
-"
 Plug 'jeetsukumaran/vim-pythonsense'                     " [Motion] Add Motion to improve productivity in python
 Plug 'andymass/vim-matchup'                              " [Motion] Add motions around keyword (g%, [%, ]%, z&)
-"
-" [Themes]
-"
 Plug 'morhetz/gruvbox'
 Plug 'mhinz/vim-startify'
-Plug 'arcticicestudio/nord-vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'flazz/vim-colorschemes'
 Plug 'vim-airline/vim-airline'
@@ -45,11 +35,8 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-"
 Plug 'voldikss/vim-floaterm'
 Plug 'itchyny/calendar.vim'
-
-" Plugin
 Plug 'reedes/vim-pencil' " Super-powered writing things
 Plug 'tpope/vim-abolish' " Fancy abbreviation replacements
 Plug 'junegunn/limelight.vim' " Highlights only active paragraph
@@ -58,7 +45,7 @@ Plug 'reedes/vim-lexical' " Better spellcheck mappings
 Plug 'reedes/vim-litecorrect' " Better autocorrections
 Plug 'reedes/vim-textobj-sentence' " Treat sentences as text objects
 Plug 'reedes/vim-wordy' " Weasel words and passive voice
-
+Plug 'turbio/bracey.vim'
 call plug#end()
 
 filetype plugin indent on        " For plugins to load correctly
@@ -79,7 +66,7 @@ let g:indent_guides_guide_size = 1
 "
 
 let g:python2_host_prog = '/usr/bin/python'
-let g:python3_host_prog = '/home/nizam/miniconda3/envs/py37/bin/python'
+let g:python3_host_prog = '/home/nizam/miniconda3/bin/python'
 let g:python_highlight_all = 1
 
 let g:jedi#goto_command = "<leader>d"
@@ -190,40 +177,6 @@ nnoremap <silent> <C-j> :call WinMove('j')<CR>
 nnoremap <silent> <C-k> :call WinMove('k')<CR>
 nnoremap <silent> <C-l> :call WinMove('l')<CR>
 
-"
-" GOYO Function.
-"
-
-function! s:goyo_enter()
-  if executable('tmux') && strlen($TMUX)
-    silent !tmux set status off
-    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
-  endif
-  set noshowmode
-  set noshowcmd
-  set scrolloff=999
-  Limelight
-  " ...
-endfunction
-
-function! s:goyo_leave()
-  if executable('tmux') && strlen($TMUX)
-    silent !tmux set status on
-    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
-  endif
-  set showmode
-  set showcmd
-  set scrolloff=5
-  Limelight!
-  " ...
-endfunction
-
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
-nnoremap <Leader>gy :Goyo<CR>
-
 
 "
 " Limelight
@@ -255,3 +208,6 @@ augroup END
  let g:pencil#softDetectSample = 20
  let g:pencil#softDetectThreshold = 130
 " }}}
+"
+
+source ~/dotfile/nvim/goyo_setting.vim

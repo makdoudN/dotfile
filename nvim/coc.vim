@@ -1,6 +1,5 @@
 let g:coc_global_extensions = [
   \ 'coc-snippets',
-  \ 'coc-python',
   \ 'coc-tabnine',
   \ 'coc-vimtex',
   \ 'coc-json',
