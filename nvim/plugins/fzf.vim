@@ -1,5 +1,3 @@
-" FZF Fuzzy Completion
-
 " This is the default extra key bindings
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
@@ -33,6 +31,7 @@ let g:fzf_colors =
 
 " Enable per-command history.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
 
@@ -76,23 +75,6 @@ endif
 " Disable the scratch menu at the top "
 set completeopt-=preview
 "
-" ALE Options "
-
-let g:ale_sign_error = '✘'
-let g:ale_sign_warning = '⚠'
-highlight ALEErrorSign ctermbg=NONE ctermfg=red
-highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
-
-" Latex Options "
-
-let g:tex_flavor = 'latex'
-let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode=0
-let g:vimtex_compiler_method = 'tectonic'
-let g:vimtex_compiler_tectonic = {}
-set conceallevel=1
-let g:tex_conceal='abdmg'
-
 " FZF Options "
 
 let $FZF_BIBTEX_SOURCES = '/home/nizam/Documents/mendeley/bibtex/library.bib'
@@ -119,5 +101,4 @@ nnoremap <leader>m :call fzf#run({
                         \ 'sink*': function('<sid>bibtex_markdown_sink'),
                         \ 'up': '40%',
                         \ 'options': '--ansi --layout=reverse-list --multi --prompt "Markdown> "'})<CR>
-
 

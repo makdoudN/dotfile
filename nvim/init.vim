@@ -46,10 +46,7 @@ augroup END
 
 source ~/dotfile/nvim/plugin.vim
 source ~/dotfile/nvim/mapping.vim
-source ~/dotfile/nvim/fzf.vim
-source ~/dotfile/nvim/ale.vim
-source ~/dotfile/nvim/coc.vim
 source ~/dotfile/nvim/theme.vim
-
+source ~/dotfile/nvim/snippets/snippets.vim
 
 autocmd InsertEnter * :let @/=""

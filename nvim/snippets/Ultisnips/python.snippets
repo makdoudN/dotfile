@@ -1,7 +1,7 @@
 
-#       
-# Core  
-#       
+#
+# Core
+#
 
 snippet ifmain "ifmain" b
 if __name__ == `!p snip.rv = get_quoting_style(snip)`__main__`!p snip.rv = get_quoting_style(snip)`:
@@ -19,9 +19,9 @@ for ${1:item} in ${2:iterable}:
 	${3:${VISUAL:pass}}
 endsnippet
 
-#         
-# COMMON  
-#         
+#
+# COMMON
+#
 
 # doesn't expand when there is a word in front
 snippet /(^|(?<=\W))\./ "self." r
@@ -32,9 +32,9 @@ snippet from "from module import name" b
 from ${1:module} import ${2:Stuff}
 endsnippet
 
-#                   
-# If / Else / Elif  
-#                   
+#
+# If / Else / Elif
+#
 
 snippet if "If" b
 if ${1:condition}:
@@ -57,9 +57,9 @@ else:
 	${5:pass}
 endsnippet
 
-#                         
-# Try / Except / Finally  
-#                         
+#
+# Try / Except / Finally
+#
 
 snippet try "Try / Except" b
 try:
@@ -97,9 +97,9 @@ finally:
 	${7:pass}
 endsnippet
 
-#                     
-# Assertions & Tests  
-#                     
+#
+# Assertions & Tests
+#
 
 snippet ae "Assert equal" b
 self.assertEqual(${1:${VISUAL:first}}, ${2:second})
@@ -129,9 +129,9 @@ snippet ann "Assert is not None" b
 self.assertIsNotNone(${1:${VISUAL:expression}})
 endsnippet
 
-#           
-# Pytorch   
-#           
+#
+# Pytorch
+#
 
 # Basic Pytorch ops.
 
