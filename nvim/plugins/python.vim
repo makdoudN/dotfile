@@ -1,4 +1,3 @@
-let g:python_recommended_style = 0
 let g:python2_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/home/nizam/miniconda3/bin/python'
 let g:python_highlight_all = 1
@@ -10,7 +9,6 @@ let g:jedi#usages_command = "<leader>n"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>r"
 
-autocmd FileType python set shiftwidth=2 tabstop=2 expandtab
 autocmd BufWritePost *.py Tab2Space
 
 nnoremap <leader>is :<c-u>ImpSort!<cr>
