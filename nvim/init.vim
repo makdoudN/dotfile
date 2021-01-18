@@ -44,9 +44,9 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
-source ~/dotfile/nvim/plugin.vim
-source ~/dotfile/nvim/mapping.vim
-source ~/dotfile/nvim/theme.vim
 source ~/dotfile/nvim/snippets/snippets.vim
+source ~/dotfile/nvim/mapping.vim
+source ~/dotfile/nvim/plugin.vim
+source ~/dotfile/nvim/theme.vim
 
 autocmd InsertEnter * :let @/=""

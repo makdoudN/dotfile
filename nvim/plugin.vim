@@ -5,7 +5,7 @@ Plug 'dense-analysis/ale'                                " Linter
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 Plug 'greyblake/vim-preview'
 Plug 'tpope/vim-repeat'                                  " . to repeat command
 Plug 'tpope/vim-surround'                                " Add s (textobject ?)
@@ -19,9 +19,13 @@ Plug 'haya14busa/incsearch.vim'                          " TODO
 Plug 'qpkorr/vim-bufkill'                                "  bd, BD to kill buffer
 Plug 'honza/vim-snippets'                                " [Snippets]
 Plug 'majutsushi/tagbar'
+" Python Related.
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'jeetsukumaran/vim-pythonsense'                     " [Motion] Add Motion to improve productivity in python
 Plug 'andymass/vim-matchup'                              " [Motion] Add motions around keyword (g%, [%, ]%, z&)
+" Theme.
 Plug 'morhetz/gruvbox'
+Plug 'arcticicestudio/nord-vim'
 Plug 'mhinz/vim-startify'
 Plug 'ryanoasis/vim-devicons'
 Plug 'flazz/vim-colorschemes'
@@ -120,9 +124,9 @@ augroup END
 " }}}
 "
 
+source ~/dotfile/nvim/plugins/goyo.vim
 source ~/dotfile/nvim/plugins/fzf.vim
 source ~/dotfile/nvim/plugins/ale.vim
-source ~/dotfile/nvim/plugins/coc.vim
-source ~/dotfile/nvim/plugins/goyo.vim
 source ~/dotfile/nvim/plugins/python.vim
 source ~/dotfile/nvim/plugins/latex.vim
+source ~/dotfile/nvim/plugins/coc.vim

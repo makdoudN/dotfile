@@ -36,8 +36,8 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 if !exists('g:airline_symbols')
      let g:airline_symbols = {}
 endif
-" Airline symbols
 
+" Airline symbols
 "let g:airline_left_sep = "\uE0C0"
 "let g:airline_right_sep = "\uE0C2"
 let g:airline_symbols.linenr = '␤'
@@ -56,9 +56,11 @@ let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
 let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 
-let g:airline_theme='gruvbox'
+"let g:airline_theme='gruvbox'
+let g:airline_theme='nord'
 let g:gruvbox_contrast_light='dark'
 let g:gruvbox_contrast_dark='dark'
 
-colorscheme gruvbox
+"colorscheme gruvbox
+colorscheme nord
 set background=dark
