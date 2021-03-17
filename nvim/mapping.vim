@@ -38,3 +38,36 @@ nmap <leader>s<down>   :rightbelow new<CR>
 map <S-j> :bnext<CR>
 map <S-k> :bprev<CR>
 
+" Easy split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+noremap  <leader>t  :FloatermToggle<CR>i
+noremap! <leader>t  <Esc>:FloatermToggle<CR>i
+tnoremap <leader>t  <C-\><C-n>:FloatermToggle<CR>
+
+nmap <Leader>l <Plug>(Limelight)
+xmap <Leader>l <Plug>(Limelight)
+
+" TagBar
+nmap <F9> :TagbarToggle<CR>
+
+cnoremap jk <ESC>
+cnoremap kj <ESC>
+
+" Options
+
+let g:loaded_matchit = 1
+let g:easyescape_chars = { "j": 1, "k": 1 }
+let g:easyescape_timeout = 100
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+let g:float_preview#docked = 1
+let g:floaterm_width = 100
+let g:floaterm_winblend = 0
+let g:limelight_conceal_ctermfg = 240
+
+

@@ -1,7 +1,7 @@
 " ALE: Extension
 
 let b:ale_linters = ['flake8']
-let g:ale_python_flake8_options = '--ignore=E501,E402,E401,E201,F403,E701,E231,E731,E111,E121,E114'
+let g:ale_python_flake8_options = '--ignore=E501,E402,E401,E201,F403,E701,E231,E731,E111,E121,E114,E221'
 let g:airline#extensions#ale#enabled = 1
 
 let g:ale_fix_on_save = 1
