@@ -1,20 +1,17 @@
 call plug#begin('~/.vim/plugged')
 Plug 'rakr/vim-one'
-Plug 'mhartington/oceanic-next'
 Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'dense-analysis/ale'                                " Linter
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 Plug 'greyblake/vim-preview'
 Plug 'tpope/vim-repeat'                                  " . to repeat command
 Plug 'tpope/vim-surround'                                " Add s (textobject ?)
 Plug 'liuchengxu/vista.vim'                              " Tagbar ++
 Plug 'tmhedberg/SimpylFold'                              " Fold python class easily za zo
 Plug 'zhou13/vim-easyescape'                             " Improve latency with jk kj jj is remap to ESC
-Plug 'psliwka/vim-smoothie'
 Plug 'easymotion/vim-easymotion'                         " Navigation
 Plug 'kshenoy/vim-signature'                             " [Workflow] Place and Toggle Mark (mx, dmx, ]` ]`)
 Plug 'haya14busa/incsearch.vim'                          " TODO
@@ -23,8 +20,6 @@ Plug 'honza/vim-snippets'                                " [Snippets]
 Plug 'majutsushi/tagbar'
 Plug 'jeetsukumaran/vim-pythonsense'                     " [Motion] Add Motion to improve productivity in python
 Plug 'andymass/vim-matchup'                              " [Motion] Add motions around keyword (g%, [%, ]%, z&)
-Plug 'morhetz/gruvbox'
-Plug 'arcticicestudio/nord-vim'
 Plug 'mhinz/vim-startify'
 Plug 'ryanoasis/vim-devicons'
 Plug 'flazz/vim-colorschemes'
@@ -37,20 +32,13 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'voldikss/vim-floaterm'
-Plug 'itchyny/calendar.vim'
-Plug 'tpope/vim-abolish' " Fancy abbreviation replacements
-Plug 'turbio/bracey.vim'
 Plug 'lervag/vimtex'  " Latex.
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }  " Hot Reload for LaTex.
-" Python Related.
-"Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 call plug#end()
 
 filetype plugin indent on        " For plugins to load correctly
 
 
-source ~/dotfile/nvim/plugins/goyo.vim
 source ~/dotfile/nvim/plugins/fzf.vim
 source ~/dotfile/nvim/plugins/ale.vim
 source ~/dotfile/nvim/plugins/python.vim

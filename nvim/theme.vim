@@ -69,6 +69,6 @@ let g:gruvbox_contrast_dark='dark'
 colorscheme one
 
 set background=light
-"set background=light
+set background=dark
 
 
