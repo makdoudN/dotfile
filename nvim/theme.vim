@@ -55,17 +55,9 @@ let airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
 let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
 let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
-
 let g:one_allow_italics = 1 " I love italic for comments
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
 let g:airline_theme='one'
-"let g:airline_theme='nord'
-"let g:airline_theme='oceanicnext'
-let g:gruvbox_contrast_light='dark'
-let g:gruvbox_contrast_dark='dark'
-"colorscheme gruvbox
-"colorscheme nord
+
 colorscheme one
 
 set background=light
