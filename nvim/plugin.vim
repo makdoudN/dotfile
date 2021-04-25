@@ -6,7 +6,6 @@ Plug 'dense-analysis/ale'                                " Linter
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
-Plug 'greyblake/vim-preview'
 Plug 'tpope/vim-repeat'                                  " . to repeat command
 Plug 'tpope/vim-surround'                                " Add s (textobject ?)
 Plug 'liuchengxu/vista.vim'                              " Tagbar ++
@@ -30,10 +29,8 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
 Plug 'lervag/vimtex'  " Latex.
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }  " Hot Reload for LaTex.
+Plug 'justinmk/vim-sneak'
 call plug#end()
 
 filetype plugin indent on        " For plugins to load correctly
